@@ -1,69 +1,45 @@
-﻿int number = 4566;
-string numberInString = number.ToString();
-char[] digits = numberInString.ToArray();
+﻿using ChallengeApp;
 
-int counter0 = 0;
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
+Employee employee1 = new Employee ("Maria", "Kowalska", 45);
+Employee employee2 = new Employee ("Katarzyna", "Nowak", 33);
+Employee employee3 = new Employee("Tadeusz", "Kot", 40);
 
-foreach (var digit in digits)
+employee1.AddScore(6);
+employee1.AddScore(4);
+employee1.AddScore(2);
+employee1.AddScore(4);
+employee1.AddScore(1);
+
+employee2.AddScore(3);
+employee2.AddScore(6);
+employee2.AddScore(4);
+employee2.AddScore(3);
+employee2.AddScore(8);
+
+employee3.AddScore(4);
+employee3.AddScore(4);
+employee3.AddScore(7);
+employee3.AddScore(0);
+employee3.AddScore(3);
+
+
+List<Employee> employees = new List<Employee>()
 {
-    if (digit == '0')
+    employee1, employee2, employee3
+};
+
+int maxResult = -1;
+Employee employeeWithMaxResult = null; 
+
+foreach (var employee in employees)
+{
+    if (employee.Result > maxResult)
     {
-        counter0++;
+        maxResult = employee.Result;
+        employeeWithMaxResult = employee;
     }
-    else if (digit == '1')
-    {
-        counter1++;
-    }
-    else if (digit == '2')
-    {
-        counter2++;
-    }
-    else if (digit == '3')
-    {
-        counter3++;
-    }
-    else if (digit == '4')
-    {
-        counter4++;
-    }
-    else if (digit == '5')
-    {
-        counter5++;
-    }
-    else if (digit == '6')
-    {
-        counter6++;
-    }
-    else if (digit == '7')
-    {
-        counter7++;
-    }
-    else if (digit == '8')
-    {
-        counter8++;
-    }
-    else if (digit == '9')
-    {
-        counter9++;
-    }
-}
-Console.WriteLine(number);
-Console.WriteLine(" 0\t" + counter0);
-Console.WriteLine(" 1\t" + counter1);
-Console.WriteLine(" 2\t" + counter2);
-Console.WriteLine(" 3\t" + counter3);
-Console.WriteLine(" 4\t" + counter4);
-Console.WriteLine(" 5\t" + counter5);
-Console.WriteLine(" 6\t" + counter6);
-Console.WriteLine(" 7\t" + counter7);
-Console.WriteLine(" 8\t" + counter8);
-Console.WriteLine(" 9\t" + counter9);
+  }
+Console.WriteLine("Name:" + employeeWithMaxResult.Name);
+Console.WriteLine("Surname:" + employeeWithMaxResult.Surname);
+Console.WriteLine("Age:" + employeeWithMaxResult.Age);
+Console.WriteLine("Score:" + employeeWithMaxResult.Result);
